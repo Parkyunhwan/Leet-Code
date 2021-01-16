@@ -41,7 +41,7 @@ class Solution:
             temp = [str]
             check[i] = True
             for j in range(i + 1, len(strs)):
-                if self.check_char(str, strs[j]) and not check[j]:
+                if self.(str, strs[j]) and not check[j]:
                     temp.append(strs[j])
                     check[j] = True
             ret.append(temp)
