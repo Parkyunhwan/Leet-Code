@@ -16,14 +16,14 @@ class Solution:
                 leaves.append(i)
 
         # 루트 노드만 남을 때까지 반복 제거
-        while n > 2:
+        while n > 2:  # 2개 남았을 땐 서로가 리프노드가 되므로 반복문을 빠져나온다.
             n -= len(leaves)
             new_leaves = []
             for leaf in leaves:
-                neighbor = graph[leaf].pop()
-                graph[neighbor].remove(leaf)
+                neighbor = graph[leaf].pop()  # 1개 연결되있던 노드를 빼서 다음 조건 노드로 선택한다.
+                graph[neighbor].remove(leaf)  # 일단 리프노드를 제외시킨다.
 
-                if len(graph[neighbor]) == 1:
+                if len(graph[neighbor]) == 1:  # 다음 조건 노드의 값의 갯수가 1인지(리프노드) 검사한다.
                     new_leaves.append(neighbor)
 
             leaves = new_leaves
