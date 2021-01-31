@@ -16,7 +16,7 @@ class Codec:
         q = collections.deque()
         q.append(root)
         ret = ['#']
-        while q:
+        while q:  # 큐를 이용하면 매 반복마다 트리의 단계별 탐색이 가능하다.
             node = q.popleft()
             if node:
                 ret.append(str(node.val))
@@ -36,10 +36,10 @@ class Codec:
             return None
         nodes = data.split()
 
-        root = TreeNode(int(nodes[1]))
+        root = TreeNode(int(nodes[1]))  # 처음 시작은 0번째가 아닌 1번
         q = collections.deque([root])
         index = 2
-        while q:
+        while q:  # 직렬화와 같이 단계별로 큐를 반복하면서 각 단계에 맞는 노드를 생성
             node = q.popleft()
             if nodes[index] is not '#':
                 node.left = TreeNode(int(nodes[index]))

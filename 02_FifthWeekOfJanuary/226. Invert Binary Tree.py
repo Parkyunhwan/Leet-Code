@@ -15,6 +15,8 @@ class Solution:
         root.right = left
         return root
     ''' 좀 더 압축한 코드
+    결국, 재귀의 의미는 리프노드 까지 내려갔다가 부모 노드로 복귀할 때 root를 반환하지만 
+         해당 root가 인자로 들어온 반대 방향으로 간다는 점이 포인트이다.
     def invertTree(self, root: TreeNode) -> TreeNode:
         if root:
             root.left, root, right = self.invertTree(root.right), self.invertTree(root.left)

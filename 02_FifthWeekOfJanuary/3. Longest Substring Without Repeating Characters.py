@@ -4,6 +4,10 @@ class Solution:
         used = dict()
         max_length = start = 0
         for index, char in enumerate(s):
+            '''
+            이미 있는 문자라면 그 문자 부터 시작위치를 잡아야 하며 시작위치가 이미 그 문자를 넘어갔다면 
+            중복되지 않으므로 새롭게 길이를 갱신한다.
+            '''
             if char in used and start <= used[char]:
                 start = used[char] + 1
             else:
