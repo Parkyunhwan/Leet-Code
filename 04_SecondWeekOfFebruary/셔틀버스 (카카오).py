@@ -34,3 +34,41 @@ def solution(n, t, m, timetable):
             # 남아있는 대기 인원 중 버스 도착 보다 빠른 인원 탑승(삭제) - 최대 m 만큼
             if timetable[j] <= bus_arrive:
                 del timetable[j]
+
+#---
+#재풀이 실패..ㅠㅠ
+def convertHourToMinute(timetable):
+    result = []
+    for time in timetable:
+        hours = int(time[:2])
+        minutes = int(time[3:])
+        result.append(60 * hours + minutes)
+    return result
+
+
+def solution(n, t, m, timetable):
+    answer = ''
+    timetable = convertHourToMinute(timetable)
+    startTime = 60 * 9
+    departTime = 60 * 9
+    last = departTime
+    for i in range(n):
+        departTime = startTime + (i * t)
+        last = departTime
+        count = 0
+        while timetable and departTime >= timetable[0]:
+            if count == m:
+                break
+            last = timetable.pop(0)
+            count += 1
+        if i == n - 1:
+
+            if timetable and timetable[0] == last:
+                answer = last - 1
+            else:
+                answer = last
+
+    hour = answer // 60
+    minute = answer % 60
+    answer = str(hour) + ":" + str(minute)
+    return answer
