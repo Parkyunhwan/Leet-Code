@@ -1,3 +1,4 @@
+//
 package BaekJoon.문자열문제.경고_3029;
 
 import java.io.BufferedReader;
